@@ -1,6 +1,7 @@
 
 import { Component } from '@angular/core';
 import { from } from 'rxjs';
+import { CoursesService } from './courses.service';
 
 @Component({
   selector : 'app-courses',
@@ -19,5 +20,9 @@ export class CoursesComponent {
   // getTitle() {
   //   return this.title;
   // }
-  courses = ['course1', 'course2', 'course3'];
+  courses;
+
+  constructor(service: CoursesService) {
+    this.courses = service.getCourses();
+  }
 }
