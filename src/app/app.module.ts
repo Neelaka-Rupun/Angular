@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { CoursesComponent } from './courses.component';
 import { CourseComponent } from './course/course.component';
 import { CoursesService } from './courses.service';
+import { NeelakaComponent } from './neelaka/neelaka.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CoursesComponent,
     CourseComponent,
+    NeelakaComponent,
   ],
   imports: [
     BrowserModule,
