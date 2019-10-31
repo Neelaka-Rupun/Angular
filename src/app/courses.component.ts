@@ -16,10 +16,6 @@ import { CoursesService } from './courses.service';
 
 export class CoursesComponent {
   title = 'List of courses';
-
-  // getTitle() {
-  //   return this.title;
-  // }
   courses;
 
   constructor(service: CoursesService) {
