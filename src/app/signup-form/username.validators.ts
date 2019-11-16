@@ -13,7 +13,7 @@ static shouldBeUnique(control: AbstractControl): Promise<ValidationErrors | null
 
       return new Promise((resolve, reject) => {
         setTimeout(() => {
-          if (control.value === 'jayamal') {
+          if (control.value === 'Neelaka') {
             resolve({ shouldBeUnique: true });
           }
           else {
