@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http'
+import { Subscriber } from 'rxjs';
 
 @Component({
   selector: 'app-post-component',
@@ -7,8 +8,15 @@ import { HttpClientModule } from '@angular/common/http'
   styleUrls: ['./post-component.component.css']
 })
 export class PostComponentComponent {
-
-  constructor(http: HttpClientModule) {
-
-  }
+  posts: any[];
+  constructor(http: HttpClient) {
+    http.get('http://jsonplaceholder.typicode.com/posts')
+    .subscribe(response => {
+      this.posts = response as any;
+      console.log(this.posts[2].title);
+      console.log(this.posts[2].userId);
+      console.log(this.posts[2].id);
+      console.log(this.posts[2].body);
+    });
+    }
 }

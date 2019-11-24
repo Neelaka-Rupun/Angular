@@ -43,14 +43,15 @@ import { from } from 'rxjs';
     NewCourseFormComponent,
     FormBuilderComponent,
     PasswordResetComponent,
-    PostComponentComponent
+    PostComponentComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [
     CoursesService,
