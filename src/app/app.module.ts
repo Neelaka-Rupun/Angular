@@ -24,6 +24,7 @@ import { FormBuilderComponent } from './form-builder/form-builder.component';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
 import { PostComponentComponent } from './post-component/post-component.component';
 import { from } from 'rxjs';
+import { PostService } from './services/post.service';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { from } from 'rxjs';
     HttpClientModule
   ],
   providers: [
+    PostService,
     CoursesService,
     AuthorsService
   ],

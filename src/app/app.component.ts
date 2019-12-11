@@ -17,24 +17,24 @@ export class AppComponent {
   };
 
   tweet = {
-    body:'Here is the body of a tweet',
+    body: 'Here is the body of a tweet',
     isLiked: false,
     likesCount: 10
   };
 
   onAdd() {
-    this.coursesTwo.push({ id: 4, name :'Course4 New added' });
+    this.coursesTwo.push({ id: 4, name: 'Course4 New added' });
   }
 
-  onRemove(coursesTwo){
-    let index = this.coursesTwo.indexOf(coursesTwo);
+  onRemove(coursesTwo) {
+    const index = this.coursesTwo.indexOf(coursesTwo);
     this.coursesTwo.splice(index, 1);
   }
   onFaviriteChanged(eventArgs: FavoriteChangedEventArgs) {
     console.log('Favorte changed :', eventArgs);
   }
 
-  onChange(coursesTwo){
+  onChange(coursesTwo) {
     coursesTwo.name = 'Updated';
   }
 
@@ -45,7 +45,7 @@ export class AppComponent {
       { id: 3, name: 'course3'},
     ];
   }
-  trackCourse(index, coursesTwo){
+  trackCourse(index, coursesTwo) {
     return coursesTwo ? this.coursesTwo.id :  undefined;
   }
 
