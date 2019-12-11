@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Subscriber } from 'rxjs';
 import { PostService } from '../services/post.service';
 
 @Component({
@@ -24,6 +23,9 @@ export class PostComponentComponent implements OnInit {
         console.log(this.posts[2].userId);
         console.log(this.posts[2].id);
         console.log(this.posts[2].body);
+      }, error => {
+        alert('An unexpected error occurred.');
+        console.log(error);
       });
 
     }
@@ -36,13 +38,20 @@ export class PostComponentComponent implements OnInit {
       .subscribe( response => {
         post[' id '] = response;
         this.posts.splice(0, 0, post);
-      });
+      },
+       error => {
+        alert('An unexpected error occurred.');
+        console.log(error);
+       });
     }
 
     updatePost( post) {
       this.service.updatePost(post)
       .subscribe(response => {
         console.log(response);
+      }, error => {
+        alert('An unexpected error occurred.');
+        console.log(error);
       });
 
     }
@@ -52,6 +61,9 @@ export class PostComponentComponent implements OnInit {
       .subscribe( response => {
        const index = this.posts.indexOf(post);
        this.posts.splice(index, 1);
+      }, error => {
+        alert('An unexpected error occurred.');
+        console.log(error);
       });
 
     }
