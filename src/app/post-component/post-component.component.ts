@@ -36,10 +36,13 @@ export class PostComponentComponent implements OnInit {
 
       this.service.createPost(post)
       .subscribe( response => {
+        if( error.status === 400 ){
+          this.form.setErrors(errpr.json())
+        }
         post[' id '] = response;
         this.posts.splice(0, 0, post);
       },
-       error => {
+       (error: Response) => {
         alert('An unexpected error occurred.');
         console.log(error);
        });
@@ -56,15 +59,33 @@ export class PostComponentComponent implements OnInit {
 
     }
 
-    deletePost(post) {
-      post.id
-      .subscribe( response => {
-       const index = this.posts.indexOf(post);
-       this.posts.splice(index, 1);
-      }, error => {
-        alert('An unexpected error occurred.');
-        console.log(error);
-      });
+    // deletePost(post) {
+    //   this.service.deletePost(345)
+    //   .subscribe( response => {
+    //    const index = this.posts.indexOf(post);
+    //    this.posts.splice(index, 1);
+    //   }, (error: Response) => {
+    //     if ( error.status === 404) {
+    //       alert('This post has already been deleted')
+    //     } else {
+    //       alert('An unexpected error occurred.');
+    //       console.log(error);
+    //     }
+    //   });
 
+    // }
+    deletePost(post) {
+      this.service.deletePost(post.id)
+        .subscribe((response: Object) => {
+          let index = this.posts.indexOf(post);
+          if (!response.hasOwnProperty(post)) {
+            alert('Post does not exist')
+            console.error(response);
+          }
+        },
+        (error) => {
+          alert('Unexpected error occured.');
+          console.log(error)
+        })
     }
 }
