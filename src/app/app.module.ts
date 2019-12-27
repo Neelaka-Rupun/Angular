@@ -22,9 +22,9 @@ import { NewCourseFormComponent } from './new-course-form/new-course-form.compon
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { FormBuilderComponent } from './form-builder/form-builder.component';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
-import { PostComponentComponent } from './post-component/post-component.component';
 import { from } from 'rxjs';
-import { PostService } from './services/post.service';
+import { PostComponent } from './posts/post.component';
+
 
 @NgModule({
   declarations: [
@@ -44,7 +44,7 @@ import { PostService } from './services/post.service';
     NewCourseFormComponent,
     FormBuilderComponent,
     PasswordResetComponent,
-    PostComponentComponent,
+    PostComponent,
 
   ],
   imports: [
@@ -55,7 +55,6 @@ import { PostService } from './services/post.service';
     HttpClientModule
   ],
   providers: [
-    PostService,
     CoursesService,
     AuthorsService
   ],
