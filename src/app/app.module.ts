@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -24,6 +24,8 @@ import { FormBuilderComponent } from './form-builder/form-builder.component';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
 import { from } from 'rxjs';
 import { PostComponent } from './posts/post.component';
+import { PostService } from './services/post.service';
+import { AppErrorHandler } from './comman/app-error-handler';
 
 
 @NgModule({
@@ -55,8 +57,10 @@ import { PostComponent } from './posts/post.component';
     HttpClientModule
   ],
   providers: [
+    PostService,
     CoursesService,
-    AuthorsService
+    AuthorsService,
+    { provide : ErrorHandler, useClass: AppErrorHandler }
   ],
   bootstrap: [AppComponent]
 })
