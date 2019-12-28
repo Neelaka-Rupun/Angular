@@ -55,21 +55,6 @@ export class PostComponent implements OnInit {
     }
 
     deletePost(post) {
-      const index = this.posts.indexOf(post);
-      this.posts.splice(index, 1);
-
-      this.service.delete(post.id)
-      .subscribe (
-       // tslint:disable-next-line: ban-types
-        null,
-      (error: AppError) => {
-        this.posts.splice(index, 0, post);
-        if (error instanceof NotFoundError) {
-          alert('post has been already deleted');
-        } else {
-          throw error;
-
-        }
-      });
+      this.service.delete(post.id);
     }
 }
