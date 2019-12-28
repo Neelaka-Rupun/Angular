@@ -17,25 +17,27 @@ export class PostComponent implements OnInit {
     constructor(private service: PostService) {}
 
     ngOnInit() {
-      this.service.getPost()
+      this.service.getAll()
       .subscribe(
-        response => {
-        console.log(response);
-        this.posts = response as any;
+        dataOfPost => {
+        console.log(dataOfPost);
+        this.posts = dataOfPost as any;
       });
     }
 
     createPost(input: HTMLInputElement) {
       const post = {title: input.value};
+      this.posts.splice(0, 0, post);
       input.value = '';
-      this.service.createPost(post)
+
+      this.service.create(post)
       .subscribe(
-        response => {
-        post['id'] = response;
-        this.posts.splice(0, 0, post);
-        console.log(response);
+        newPost => {
+        post['id'] = newPost;
+        console.log(newPost);
       },
         (error: AppError) => {
+          this.posts.splice(0, 1);
           if ( error instanceof BadInput) {
             // this.form.setErrors(error.originalError);
           } else {
@@ -45,31 +47,24 @@ export class PostComponent implements OnInit {
     }
 
     updatePost(post) {
-      this.service.updatePost(post.id)
+      this.service.update(post.id)
       .subscribe(
-        response => {
-        console.log(response);
+        updatePost => {
+        console.log(updatePost);
       });
     }
 
     deletePost(post) {
-      let reslog ;
-      this.service.deletePost(345)
-      .subscribe(
-       // tslint:disable-next-line: ban-types
-       ( response: Object ) => {
-        const index = this.posts.indexOf(222);
-        this.posts.splice(index, 1);
-        console.log(response);
-        if (Object.keys(response).length === 0) {
-        console.log('response works');
+      const index = this.posts.indexOf(post);
+      this.posts.splice(index, 1);
 
-      }
-      },
+      this.service.delete(post.id)
+      .subscribe (
+       // tslint:disable-next-line: ban-types
+        null,
       (error: AppError) => {
-        console.log(reslog + "123");
-        if ((error instanceof NotFoundError) && (Object.keys(reslog).length === 0)) {
-          console.log('Error log');
+        this.posts.splice(index, 0, post);
+        if (error instanceof NotFoundError) {
           alert('post has been already deleted');
         } else {
           throw error;
