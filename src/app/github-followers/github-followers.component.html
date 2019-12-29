@@ -1,1 +1,9 @@
-<p>github-followers works!</p>
+<div *ngFor="let follower of followers" class="media">
+  <img src="{{ follower.avatar_url }}" class="avatar align-self-start" alt="Image is missing">
+  <div class="media-body">
+    <a [routerLink] ="['/followers', follower.id]">
+      <h5 class="mt-0">{{ follower.login}}</h5>
+    </a>
+    <a hrm="follower.html_url"> {{follower.html_url}} </a>
+  </div>
+</div>
