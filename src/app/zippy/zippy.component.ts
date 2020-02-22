@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ZippyComponent implements OnInit {
  // tslint:disable-next-line: no-input-rename
  @Input('title') title: string;
- isExpanded: boolean = true;
+ isExpanded = true;
   constructor() { }
 
   toggle() {

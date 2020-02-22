@@ -14,11 +14,11 @@ export class GithubProfileComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    //snapshot use the original paramMap to get the id insted of using the observerbale
+    // snapshot use the original paramMap to get the id insted of using the observerbale
     // const id  = this.route.snapshot.paramMap.get('id');
     // console.log(id);
 
-    //Using the observerble to get the paramMap id
+    // Using the observerble to get the paramMap id
     this.route.paramMap.
       subscribe(params => {
         const id = +params.get('id');

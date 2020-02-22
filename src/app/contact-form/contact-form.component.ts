@@ -7,15 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactFormComponent {
 
-  contactMethods =[
-    { id:1, name: 'Email'},
-    { id:2, name: 'phone'},
+  contactMethods = [
+    { id: 1, name: 'Email'},
+    { id: 2, name: 'phone'},
   ];
-  log(x){
+  log(x) {
     console.log(x);
   }
 
-  submit(f){
+  submit(f) {
     console.log(f);
   }
 

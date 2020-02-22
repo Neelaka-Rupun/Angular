@@ -10,12 +10,12 @@ import { AuthorsService } from '../authors.service';
 })
 export class SignupFormComponent {
   form = new FormGroup({
-    'account': new FormGroup({
-    'username': new FormControl('',
+    account: new FormGroup({
+    username: new FormControl('',
     Validators.required,
       UsernameValidators.shouldBeUnique
     ),
-    'password': new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required),
     })
 
   });

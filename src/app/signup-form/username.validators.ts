@@ -15,8 +15,7 @@ static shouldBeUnique(control: AbstractControl): Promise<ValidationErrors | null
         setTimeout(() => {
           if (control.value === 'Neelaka') {
             resolve({ shouldBeUnique: true });
-          }
-          else {
+          } else {
             resolve(null);
           }
         }, 2000);

@@ -16,8 +16,8 @@ return new Promise((resolve, reject) => {
   }
 
   static passwordShouldMatch(control: AbstractControl) {
-   let newPassword = control.get('newPassword');
-   let confirmPassword = control.get('confirmPassword');
+   const newPassword = control.get('newPassword');
+   const confirmPassword = control.get('confirmPassword');
 
    if (newPassword.value !== confirmPassword.value) {
     return { passwordShouldMatch: true};

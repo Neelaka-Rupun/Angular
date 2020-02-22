@@ -11,7 +11,7 @@ import { CoursesService } from './courses.service';
 <li *ngFor="let course of courses">
 {{course}}</li>
 </ul>
-` //data binding.
+` // data binding.
 })
 
 export class CoursesComponent {
