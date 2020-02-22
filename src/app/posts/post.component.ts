@@ -59,7 +59,7 @@ export class PostComponent implements OnInit {
       this.posts.splice(index, 1);
 
       this.service.delete(post.id)
-      .subscribe (
+      .subscribe ( 
        // tslint:disable-next-line: ban-types
         null,
       (error: AppError) => {
