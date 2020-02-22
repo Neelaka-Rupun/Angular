@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, map, tap, retry } from 'rxjs/operators';
 import { observable, throwError  } from 'rxjs';
 import { NotFoundError } from '../comman/not-found-error';
 import { AppError } from '../comman/app-error';
@@ -37,11 +37,12 @@ export class DataService {
   }
 
   delete(id) {
-    return throwError(new AppError());
-    // return this.http.delete(this.url + '/' + id).
-    // pipe( map(response => response),
-    //   catchError(this.handleError)
-    // );
+    // return throwError(new AppError());
+    // if the call to the server faild this method will try 3 times and give an error
+    return this.http.delete(this.url + '/' + id).
+    pipe( retry(3), map(response => response),
+      catchError(this.handleError)
+    );
   }
 
   private handleError(error: Response) {

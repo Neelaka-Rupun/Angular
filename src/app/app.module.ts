@@ -26,6 +26,12 @@ import { from } from 'rxjs';
 import { PostComponent } from './posts/post.component';
 import { PostService } from './services/post.service';
 import { AppErrorHandler } from './comman/app-error-handler';
+import { RouterModule } from '@angular/router';
+import { NavbarComponent } from './navbar/navbar.component';
+import { HomeComponent } from './home/home.component';
+import { GithubProfileComponent } from './github-profile/github-profile.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { GithubFollowersComponent } from './github-followers/github-followers.component';
 
 
 @NgModule({
@@ -47,6 +53,11 @@ import { AppErrorHandler } from './comman/app-error-handler';
     FormBuilderComponent,
     PasswordResetComponent,
     PostComponent,
+    NavbarComponent,
+    HomeComponent,
+    GithubProfileComponent,
+    NotFoundComponent,
+    GithubFollowersComponent,
 
   ],
   imports: [
@@ -54,7 +65,14 @@ import { AppErrorHandler } from './comman/app-error-handler';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot([
+      {path: '', component: HomeComponent },
+      {path: 'followers', component: GithubProfileComponent },
+      {path: 'profile/:username', component: GithubProfileComponent },
+      {path: 'post', component: PostComponent },
+      {path: '**', component: NotFoundComponent },
+    ])
   ],
   providers: [
     PostService,
