@@ -7,9 +7,7 @@ import { AppError } from '../comman/app-error';
 import { BadInput } from '../comman/bad-input';
 
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class DataService {
 
   constructor(private url: string, private http: HttpClient) { }
